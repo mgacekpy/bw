@@ -1,0 +1,12 @@
+{
+  "extends": "astro/tsconfigs/base",
+  "compilerOptions": {
+    // Pozwala na pracę z plikami .js
+    "allowJs": true,
+    // Wyłącza błąd "niejawnie określono typ 'any'"
+    "noImplicitAny": false,
+    // Zapewnia, że JSX/TSX w plikach .astro działa poprawnie
+    "jsx": "preserve",
+    "jsxImportSource": "astro"
+  }
+}

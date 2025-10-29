@@ -1,0 +1,60 @@
+---
+// src/components/CookieConsent.astro
+---
+<div id="cookie-consent-banner" class="fixed bottom-0 left-0 right-0 bg-surface border-t border-white/10 p-4 z-50 transition-all duration-500 ease-in-out transform translate-y-full" role="dialog" aria-labelledby="cookie-consent-title" aria-describedby="cookie-consent-desc">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="text-center sm:text-left">
+            <h2 id="cookie-consent-title" class="sr-only">Zgoda na pliki cookie</h2>
+            <p id="cookie-consent-desc" class="text-sm text-secondary">
+                Używamy plików cookie do analizy ruchu i ulepszania strony. Klikając „Akceptuję”, zgadzasz się na ich użycie. Więcej informacji znajdziesz w naszej 
+                <a href="/polityka-prywatnosci" class="font-semibold text-primary hover:underline">Polityce prywatności</a>.
+            </p>
+        </div>
+        <button id="cookie-consent-accept" class="bg-primary hover:brightness-110 text-background font-semibold py-2 px-5 rounded-lg transition-all duration-300 text-sm flex-shrink-0">
+            Akceptuję
+        </button>
+    </div>
+</div>
+
+<style>
+    /* Ten styl odpowiada za płynne pojawienie się banera */
+    #cookie-consent-banner.visible {
+        transform: translateY(0);
+    }
+</style>
+
+<script is:inline>
+    // Cała logika jest tutaj, w jednym miejscu.
+    document.addEventListener('DOMContentLoaded', () => {
+        const banner = document.getElementById('cookie-consent-banner');
+        const acceptButton = document.getElementById('cookie-consent-accept');
+        const consentKey = 'cookie_consent_accepted';
+
+        // 1. Sprawdź, czy zgoda została już udzielona
+        if (localStorage.getItem(consentKey) === 'true') {
+            // Jeśli tak, nie rób nic. Baner pozostanie ukryty.
+            return;
+        }
+
+        // 2. Jeśli nie ma zgody, pokaż baner
+        // Używamy małego opóźnienia, aby animacja zadziałała poprawnie
+        setTimeout(() => {
+            banner.classList.add('visible');
+        }, 100);
+
+        // 3. Obsługa kliknięcia przycisku "Akceptuję"
+        acceptButton.addEventListener('click', () => {
+            // Zapisz zgodę w localStorage
+            localStorage.setItem(consentKey, 'true');
+
+            // Ukryj baner z animacją
+            banner.classList.remove('visible');
+            
+            // WAŻNE: W tym miejscu możesz uruchomić skrypty, które wymagają zgody,
+            // np. inicjalizację Google Analytics.
+            console.log('Zgoda na cookies zaakceptowana. Uruchamiam analitykę...');
+            
+            
+        });
+    });
+</script>

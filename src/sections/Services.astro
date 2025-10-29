@@ -1,0 +1,56 @@
+---
+const services = [
+  {
+    title: "Strony i sklepy internetowe",
+    imageSrc: "/gfx/web-development-html-css-js-ikona-graficzna.jpg", 
+    altText: "Ikona Web Development – wizualizacja kodu HTML, CSS i JavaScript z interfejsem strony w stylu 3D",
+    details: "Tworzę nowoczesne i responsywne strony internetowe oraz sklepy online, które nie tylko dobrze wyglądają, ale przede wszystkim wspierają sprzedaż i budują zaufanie do marki. Wdrażam witryny oparte o WordPress z dedykowanym panelem CMS, a także zaawansowane projekty w Next.js lub z architekturą Headless. Sklepy internetowe realizuję na WooCommerce lub jako rozwiązania dedykowane – z integracją płatności, systemami zamówień i intuicyjnym interfejsem. Każdy projekt jest zoptymalizowany pod kątem SEO, szybkości działania, bezpieczeństwa oraz dopasowany do branży i celów klienta. To nie tylko strona – to narzędzie, które może realnie wspierać Twój biznes i pomagać w zwiększaniu jego potencjału.",
+  },
+  {
+    title: "Aplikacje SaaS & Webowe",
+    imageSrc: "/gfx/saas-applications-ikona-graficzna.jpg", 
+    altText: "Ikona SaaS Applications – nowoczesna grafika z ekranami aplikacji mobilnej i webowej w modelu SaaS",
+    details: "Projektuję aplikacje webowe i rozwiązania SaaS, które wspierają firmy w automatyzacji, zarządzaniu i sprzedaży. Tworzę systemy rezerwacji, panele klienta, platformy subskrypcyjne i inne dedykowane narzędzia w oparciu o nowoczesne technologie takie jak Next.js, React, Node.js i Python. Każda aplikacja powstaje na bazie realnych potrzeb biznesowych – łącząc dopracowany frontend z funkcjonalnym backendem, autoryzacją, bazą danych i integracjami z zewnętrznymi systemami. Jeśli potrzebujesz aplikacji, która działa w chmurze, obsługuje konta użytkowników, płatności i subskrypcje, to dostarczę Ci gotowe, skalowalne i bezpieczne rozwiązanie, które może ułatwić rozwój Twojej firmy.",
+  },
+  {
+    title: "Aplikacje Desktop",
+    imageSrc: "/gfx/desktop-applications-ikona-graficzna.jpg",
+    altText: "Ikona Desktop Applications – wizualizacja okien programu i interfejsu użytkownika w stylu 3D",
+    details: "Tworzę stabilne i szybkie aplikacje desktopowe na Windows i macOS, idealne do pracy offline lub w środowisku, które nie wymaga działania w przeglądarce. Korzystam z technologii Electron i Python, co pozwala budować narzędzia z nowoczesnym interfejsem, obsługą lokalnych plików, synchronizacją danych i aktywacją kluczem. Aplikacje desktopowe to doskonały wybór dla firm potrzebujących własnego oprogramowania do analizy danych, generowania dokumentów, zarządzania projektami czy integracji ze sprzętem. Działają szybko, uruchamiają się lokalnie i nie są zależne od internetu – to bezpieczne i sprawdzone rozwiązanie dla wielu branż.",
+  },
+];
+---
+
+<section id="uslugi" class="py-20 sm:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="services-title text-3xl sm:text-4xl font-bold tracking-tight  animate-on-scroll">Kluczowe Obszary Działania</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {services.map((service) => (
+                <div class="service-card bg-surface rounded-2xl p-1 flex flex-col border border-white/10 transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/5  animate-on-scroll">
+                    <div class="bg-background rounded-t-xl h-64 w-full flex-shrink-0 overflow-hidden group p-4">
+                        <img 
+                            src={service.imageSrc} 
+                            alt={service.altText}
+                            loading="lazy" decoding="async"
+                            class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
+                        />
+                    </div>
+                    <div class="p-6 flex justify-between items-center">
+                        <h3 class="text-lg font-semibold">{service.title}</h3>
+                        <button 
+                            class="service-modal-trigger w-8 h-8 border border-zinc-700 rounded-full flex items-center justify-center text-primary transition-colors hover:bg-primary hover:text-background flex-shrink-0"
+                            data-title={service.title}
+                            data-details={service.details}
+                            aria-haspopup="dialog"
+                            aria-controls="service-modal"
+                            aria-label={`Pokaż szczegóły: ${service.title}`}
+                        >+</button>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,90 @@
+---
+const currentPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
+const isActive = (href) => (href === '/' ? currentPath === '/' : currentPath.startsWith(href));
+---
+
+<header id="main-header" class="fixed top-0 left-0 w-full z-50 bg-background/50 backdrop-blur-lg border-b border-white/10">
+  <div class="flex items-center justify-between h-16 px-5">
+    <div class="flex-shrink-0 nav-item">
+      <a href="/">
+        <img src="/logotype/Logo-marki-BiznesWizytowka-pl-tworzenie-stron-i-aplikacji-dla-firm.svg" alt="Logo BiznesWizytowka.pl" class="h-auto" style="width: 150px;" />
+      </a>
+    </div>
+
+    <nav class="hidden lg:flex space-x-2 items-center">
+      <a href="/" class={`nav-link px-3 py-2 rounded-md text-sm font-medium transition-colors relative ${isActive('/') ? 'text-primary' : 'text-secondary hover:text-primary'}`}>
+        Start<span class="underline-span absolute bottom-1 left-0 w-full h-0.5 bg-accent-end rounded-full"></span>
+      </a>
+      <a href="/uslugi" class={`nav-link px-3 py-2 rounded-md text-sm font-medium transition-colors relative ${isActive('/uslugi') ? 'text-primary' : 'text-secondary hover:text-primary'}`}>
+        Usługi<span class="underline-span absolute bottom-1 left-0 w-full h-0.5 bg-accent-end rounded-full"></span>
+      </a>
+      <a href="/narzedzia" class={`nav-link px-3 py-2 rounded-md text-sm font-medium transition-colors relative ${isActive('/narzedzia') ? 'text-primary' : 'text-secondary hover:text-primary'}`}>
+        Narzędzia<span class="underline-span absolute bottom-1 left-0 w-full h-0.5 bg-accent-end rounded-full"></span>
+      </a>
+      <a href="/portfolio" class={`nav-link px-3 py-2 rounded-md text-sm font-medium transition-colors relative ${isActive('/portfolio') ? 'text-primary' : 'text-secondary hover:text-primary'}`}>
+        Portfolio<span class="underline-span absolute bottom-1 left-0 w-full h-0.5 bg-accent-end rounded-full"></span>
+      </a>
+      <a href="/sklep" class={`nav-link px-3 py-2 rounded-md text-sm font-medium transition-colors relative ${isActive('/sklep') ? 'text-primary' : 'text-secondary hover:text-primary'}`}>
+        Sklep<span class="underline-span absolute bottom-1 left-0 w-full h-0.5 bg-accent-end rounded-full"></span>
+      </a>
+      <a href="/blog" class={`nav-link px-3 py-2 rounded-md text-sm font-medium transition-colors relative ${isActive('/blog') ? 'text-primary' : 'text-secondary hover:text-primary'}`}>
+        Blog<span class="underline-span absolute bottom-1 left-0 w-full h-0.5 bg-accent-end rounded-full"></span>
+      </a>
+      <a href="/o-mnie" class={`nav-link px-3 py-2 rounded-md text-sm font-medium transition-colors relative ${isActive('/o-mnie') ? 'text-primary' : 'text-secondary hover:text-primary'}`}>
+        O mnie<span class="underline-span absolute bottom-1 left-0 w-full h-0.5 bg-accent-end rounded-full"></span>
+      </a>
+      <a href="/kontakt" class={`nav-link px-3 py-2 rounded-md text-sm font-medium transition-colors relative ${isActive('/kontakt') ? 'text-primary' : 'text-secondary hover:text-primary'}`}>
+        Kontakt<span class="underline-span absolute bottom-1 left-0 w-full h-0.5 bg-accent-end rounded-full"></span>
+      </a>
+    </nav>
+
+    <div class="hidden lg:block">
+      <a href="/panel-klienta" class="bg-primary hover:brightness-110 text-background font-semibold py-2 px-5 rounded-lg transition-all duration-300 text-sm">
+        Zaloguj / Zarejestruj
+      </a>
+    </div>
+
+    <div class="lg:hidden">
+      <button id="menu-toggle" class="text-primary focus:outline-none z-50 relative" aria-label="Otwórz menu nawigacyjne">
+        <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-8 6h8"></path></svg>
+        <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="mobile-menu" class="lg:hidden fixed inset-0 bg-background/50 backdrop-blur-lg z-40 flex-col items-center justify-center gap-8 text-2xl text-center" style="display: none;">
+  <a href="/" class="mobile-link">Start</a>
+  <a href="/uslugi" class="mobile-link">Usługi</a>
+  <a href="/narzedzia" class="mobile-link">Narzędzia</a>
+  <a href="/portfolio" class="mobile-link">Portfolio</a>
+  <a href="/sklep" class="mobile-link">Sklep</a>
+  <a href="/blog" class="mobile-link">Blog</a>
+  <a href="/o-mnie" class="mobile-link">O mnie</a>
+  <a href="/kontakt" class="mobile-link">Kontakt</a>
+  <a href="/panel-klienta" class="mobile-link mt-8 bg-primary text-background font-semibold py-3 px-8 rounded-lg">Zaloguj / Zarejestruj</a>
+</div>
+
+<style>
+
+  /* Podkreślenie jest domyślnie ukryte */
+  .nav-link .underline-span {
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.25s ease;
+  }
+
+  /* Pokazujemy podkreślenie tylko dla aktywnego linku LUB przy najechaniu myszką */
+  .nav-link.text-primary .underline-span,
+  .nav-link:hover .underline-span {
+    transform: scaleX(1);
+  }
+
+  /* Upewniamy się, że po zejściu myszką z nieaktywnego linku, podkreślenie znowu znika */
+  .nav-link:not(.text-primary):hover .underline-span {
+    transform: scaleX(1);
+  }
+  .nav-link:not(.text-primary) .underline-span {
+    /* Ten styl jest już wyżej, ale dla pewności go zostawiamy */
+  }
+</style>

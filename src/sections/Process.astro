@@ -1,0 +1,100 @@
+---
+const processSteps = [
+    { 
+        title: "Analiza i Strategia",
+        description: "Każdy projekt rozpoczynam od głębokiego zrozumienia Twojego biznesu, celów i grupy docelowej. Definiujemy kluczowe wskaźniki sukcesu (KPI) i tworzymy strategię, która zapewni realne rezultaty.",
+        icon: "M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 010 3.75H5.625a1.875 1.875 0 010-3.75z"
+    },
+    { 
+        title: "Design i Prototypowanie",
+        description: "Projektuję intuicyjne interfejsy (UI) i doświadczenia użytkownika (UX), koncentrując się na prostocie i efektywności. Tworzę interaktywne prototypy, które pozwalają nam przetestować i udoskonalić produkt jeszcze przed rozpoczęciem kodowania.",
+        icon: "M7.5 15h9M7.5 17.25h9M12 21a9 9 0 100-18 9 9 0 000 18z"
+    },
+    { 
+        title: "Development i Wdrożenie",
+        description: "Piszę czysty, skalowalny i wydajny kod, korzystając z nowoczesnych technologii. Regularnie prezentuję postępy prac, a cały proces wdrożenia na serwer jest w pełni zautomatyzowany i bezpieczny.",
+        icon: "M6.75 7.5l3 2.25-3 2.25m3 0H3m7.5 6l3-2.25-3-2.25m3 0H7.5"
+    },
+    { 
+        title: "Testy i Optymalizacja",
+        description: "Przeprowadzam dokładne testy funkcjonalne, wydajnościowe i bezpieczeństwa, aby zapewnić najwyższą jakość produktu. Optymalizuję kod i zapytania do bazy danych, gwarantując szybkość działania aplikacji.",
+        icon: "M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+    },
+    { 
+        title: "Wsparcie i Rozwój",
+        description: "Moja praca nie kończy się na wdrożeniu. Oferuję stałe wsparcie techniczne, monitoring oraz dalszy rozwój produktu, aby dostosowywać go do zmieniających się potrzeb Twojego biznesu i rynku.",
+        icon: "M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"
+    }
+];
+---
+<section id="proces" class="py-20 sm:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="process-title text-3xl sm:text-4xl font-bold tracking-tight">Proces Współpracy</h2>
+        </div>
+        <div class="lg:hidden flex flex-col">
+            {processSteps.map((step, index) => (
+                <div class="process-accordion-item border-b border-white/10 last:border-b-0">
+                    <div class="process-accordion-header cursor-pointer py-4 flex justify-between items-center gap-4">
+                        <div class="flex items-center gap-4">
+                            <span class="text-secondary font-semibold">{`0${index + 1}`}</span>
+                            <h3 class="text-lg font-semibold text-primary">{step.title}</h3>
+                        </div>
+                        <svg class="process-accordion-icon w-5 h-5 text-secondary flex-shrink-0 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </div>
+                    <div class="process-accordion-content overflow-hidden h-0">
+                        <div class="pb-4 pl-10">
+                            <p class="text-secondary leading-relaxed">{step.description}</p>
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+        <div class="hidden lg:grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+            <div class="process-triggers relative">
+                 <div class="active-indicator absolute left-0 top-0 w-1 h-8 bg-gradient-to-b from-accent-start to-accent-end rounded-full"></div>
+                {processSteps.map((step, index) => (
+                    <div class="process-step-trigger relative pl-8 py-4 cursor-pointer" data-index={index}>
+                        <div class="flex items-center gap-4">
+                            <span class="step-number text-secondary font-semibold">{`0${index + 1}`}</span>
+                            <h3 class="step-title text-2xl font-semibold text-primary">{step.title}</h3>
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+            <div class="process-content-wrapper min-h-[24rem] rounded-2xl relative bg-[#080808] border border-white/10 shadow-xl flex items-center justify-center p-12 overflow-hidden">
+                <div class="absolute inset-0 z-0 flex items-center justify-center">
+                    <svg class="spinning-contours w-[150%] h-auto text-primary/10" viewBox="0 0 400 400" fill="none">
+                        <circle cx="200" cy="200" r="50" stroke="currentColor" stroke-width="1" stroke-dasharray="2 10"></circle>
+                        <circle cx="200" cy="200" r="100" stroke="currentColor" stroke-width="1" stroke-dasharray="2 12"></circle>
+                        <circle cx="200" cy="200" r="150" stroke="currentColor" stroke-width="1" stroke-dasharray="2 14"></circle>
+                        <circle cx="200" cy="200" r="200" stroke="currentColor" stroke-width="1" stroke-dasharray="2 16"></circle>
+                    </svg>
+                </div>
+                
+                <div class="relative z-10 w-full h-full">
+                    {processSteps.map((step, index) => (
+                        <div class="process-content-item absolute inset-0 text-center flex flex-col items-center justify-center" data-index={index}>
+                            <svg class="w-16 h-16 text-primary mx-auto mb-6 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.0" stroke="currentColor">
+                               <path stroke-linecap="round" stroke-linejoin="round" d={step.icon} />
+                            </svg>
+                            <p class="text-secondary leading-relaxed">{step.description}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+    .spinning-contours {
+        animation: spin 60s linear infinite;
+    }
+</style>
+

@@ -1,0 +1,9 @@
+# Pozwolenie na indeksowanie dla wszystkich wyszukiwarek
+User-agent: *
+
+# Zablokuj dostęp do stron i folderów, które nie powinny znaleźć się w Google
+Disallow: /panel-klienta/
+Disallow: /app/
+
+# Wskaż wyszukiwarkom, gdzie znajduje się mapa Twojej strony (bardzo ważne dla SEO)
+Sitemap: https://bizneswizytowka.pl/sitemap-index.xml

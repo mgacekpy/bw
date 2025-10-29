@@ -1,0 +1,79 @@
+---
+const coreTechnologies = [
+    { name: 'HTML5', imageSrc: '/gfx/html.svg', title: 'HTML5 – standard języka znaczników do budowania struktury i treści stron internetowych', href: 'https://html.spec.whatwg.org/multipage/' },
+    { name: 'CSS3', imageSrc: '/gfx/css.svg', title: 'CSS3 – nowoczesne arkusze stylów kaskadowych do nadawania wyglądu i responsywności stron', href: 'https://www.w3.org/Style/CSS/' },
+    { name: 'JavaScript', imageSrc: '/gfx/js.svg', title: 'JavaScript – język programowania dodający interaktywność, logikę i dynamikę do stron internetowych', href: 'https://tc39.es/' },
+    { name: 'PHP', imageSrc: '/gfx/php.svg', title: 'PHP – popularny język skryptowy do budowania dynamicznych stron i aplikacji webowych po stronie serwera', href: 'https://www.php.net/' },
+    { name: 'Python', imageSrc: '/gfx/python.svg', title: 'Python – wszechstronny język programowania stosowany w backendzie, analizie danych i automatyzacjach', href: 'https://www.python.org/' },
+    { name: 'SQL', imageSrc: '/gfx/sql.svg', title: 'SQL – język zapytań do zarządzania i pobierania danych z relacyjnych baz danych', href: 'https://www.iso.org/standard/63555.html' }
+];
+
+const frameworksAndLibraries = [
+    { name: 'Next.js', imageSrc: '/gfx/next.svg', title: 'Next.js – framework React z renderowaniem po stronie serwera i generowaniem statycznym', href: 'https://nextjs.org/' },
+    { name: 'Django', imageSrc: '/gfx/django.svg', title: 'Django – framework Python do szybkiego i bezpiecznego budowania aplikacji webowych po stronie serwera', href: 'https://www.djangoproject.com/' },
+    { name: 'Astro', imageSrc: '/gfx/astro.svg', title: 'Astro – nowoczesny framework do tworzenia szybkich, lekkich stron statycznych i hybrydowych', href: 'https://astro.build/' },
+    { name: 'Tailwind CSS', imageSrc: '/gfx/tailwind.svg', title: 'Tailwind CSS – framework CSS typu utility-first do szybkiego tworzenia responsywnych interfejsów', href: 'https://tailwindcss.com/' },
+    { name: 'WordPress', imageSrc: '/gfx/wordpress.svg', title: 'WordPress – najpopularniejszy system CMS do zarządzania treścią stron i sklepów internetowych, w tym WooCommerce', href: 'https://wordpress.org/' },
+    { name: 'WooCommerce', imageSrc: '/gfx/woocommerce.svg', title: 'Woocommerce – najpopularniejszy system zarządzania sklepem', href: 'https://woocommerce.com/' }
+];
+---
+
+<section id="technologie" class="py-20 sm:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center mb-16">
+            <h2 class="tech-title text-3xl sm:text-4xl font-bold tracking-tight animate-on-scroll">Technologie i Narzędzia</h2>
+            <p class="tech-subtitle mt-4 text-lg text-secondary animate-on-scroll">
+                W mojej pracy korzystam z nowoczesnych i sprawdzonych rozwiązań, które gwarantują jakość, wydajność i bezpieczeństwo budowanych produktów.
+            </p>
+        </div>
+
+        <div class="max-w-3xl mx-auto text-center mb-10">
+            <h3 class="tech-subtitle-1 text-2xl font-bold tracking-tight">Języki i Technologie</h3>
+        </div>
+
+        <div id="core-tech-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8">
+            {coreTechnologies.map(tech => (
+                <a 
+                    href={tech.href}
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    class="tech-card group flex flex-col items-center gap-4 p-6 rounded-2xl bg-white/5 border border-white/10 transition-all duration-300 ease-in-out hover:bg-white/10 hover:-translate-y-1 animate-on-scroll"
+                    title={tech.title}
+                >
+                    <img src={tech.imageSrc} alt="" class="w-12 h-12 text-primary opacity-80 group-hover:opacity-100 transition-colors duration-300" />
+                    <p class="text-sm font-semibold text-primary">{tech.name}</p>
+                </a>
+            ))}
+        </div>
+
+        <div class="max-w-3xl mx-auto text-center my-16 pt-8 border-t border-white/10">
+            <h3 class="tech-subtitle-2 text-2xl font-bold tracking-tight">Frameworki i biblioteki</h3>
+        </div>
+
+        <div id="frameworks-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8">
+             {frameworksAndLibraries.map(tech => (
+                <a 
+                    href={tech.href}
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    class="tech-card group flex flex-col items-center gap-4 p-6 rounded-2xl bg-white/5 border border-white/10 transition-all duration-300 ease-in-out hover:bg-white/10 hover:-translate-y-1 animate-on-scroll"
+                    title={tech.title}
+                >
+                    <img src={tech.imageSrc} alt="" class="w-12 h-12 text-primary opacity-80 group-hover:opacity-100 transition-colors duration-300" />
+                    <p class="text-sm font-semibold text-primary">{tech.name}</p>
+                </a>
+            ))}
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Ta reguła wymusi na obrazkach SVG dziedziczenie koloru z klasy `text-*` */
+    .tech-card img,
+    .tech-card img path,
+    .tech-card img circle,
+    .tech-card img rect {
+        fill: currentColor;
+    }
+</style>
+

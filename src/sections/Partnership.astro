@@ -1,0 +1,124 @@
+---
+const partnershipItems = [
+    {
+        title: "Podejście Strategiczne",
+        description: "Nie oferuję uniwersalnych rozwiązań – zaczynam od zrozumienia Twojej firmy, procesów i celów.",
+        details: "Każdy projekt zaczynam od analizy – Twojej firmy, klientów i celów. Nie oferuję gotowych szablonów, tylko rozwiązania szyte na miarę. Dzięki temu technologia realnie wspiera rozwój Twojego biznesu, zamiast być tylko kolejną 'ładną stroną'.",
+        // Twoja grafika SVG jako HTML string
+        visualHTML: `
+            <div class="flex items-center justify-around w-full text-zinc-400">
+                <div class="flex flex-col items-center gap-2 text-center">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    <span class="text-xs">Analiza</span>
+                </div>
+                <div><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div>
+                <div class="flex flex-col items-center gap-2 text-center">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5z"></path><path d="M12 12v10"></path><path d="M2 12h10"></path></svg>
+                    <span class="text-xs">Cele</span>
+                </div>
+                <div><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div>
+                <div class="flex flex-col items-center gap-2 text-center">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 20l4-16m4 16l-4-16H6l-4 16"></path></svg>
+                    <span class="text-xs">Rozwiązanie</span>
+                </div>
+            </div>`
+    },
+    {
+        title: "Innowacyjność i Jakość",
+        description: "Korzystam z najnowszych, sprawdzonych technologii, aby Twoje produkty były szybkie, skalowalne i bezpieczne.",
+        details: "Stawiam na nowoczesne i sprawdzone technologie, takie jak Astro, Next.js czy Python. Aplikacje oparte o ten stos gwarantują szybkość, bezpieczeństwo i doskonałe doświadczenia użytkownika (UX), co przekłada się na wyższą konwersję.",
+        visualHTML: `
+            <div class="flex items-center justify-around w-full text-zinc-400">
+                <div class="flex flex-col items-center gap-2 text-center">
+                    <div class="flex gap-2">
+                        <svg width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M12.83 11.17A.996.996 0 0 0 12.41 11H11v2h1.59c.45 0 .85-.31.97-.75l.02-.06c.15-.48.59-.83 1.1-.83h2.64l-2.3-2.3a.996.996 0 0 0-1.41 0L14 11.59V10a2 2 0 0 0-2-2H8.5a2 2 0 0 0-1.74 1.07l-3.48 6.02A2 2 0 0 0 5.02 18h5.24l2.3 2.3c.78.78 2.05.78 2.83 0l4.55-4.55a.996.996 0 0 0 0-1.41L17.64 12h-2.64c-.66 0-1.21.47-1.35.97l-.02.06c-.16.51-.64.87-1.21.87H11v-1.83c0-.21.07-.41.2-.57L12.83 11.17z"></path></svg>
+                        <svg width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M13.79 12.63a1.19 1.19 0 0 0-1.19-1.19H12v2.38h.6c.66 0 1.19-.53 1.19-1.19m6.41-5.15L13.81.09a2.38 2.38 0 0 0-3.37 0L4.05 6.48a2.38 2.38 0 0 0 0 3.37l6.39 6.39a2.38 2.38 0 0 0 3.37 0l6.39-6.39a2.38 2.38 0 0 0 0-3.37M15 13.81H9V9h6c1.99 0 3.59 1.6 3.59 3.59v.61c0 1.98-1.6 3.59-3.59 3.59H12v2.38h3c3.31 0 5.98-2.68 5.98-5.98v-.6c0-3.31-2.68-5.98-5.98-5.98H9V4.79h6c.66 0 1.19.53 1.19 1.19v7.83Z"></path></svg>
+                    </div>
+                    <span class="text-xs">Technologie</span>
+                </div>
+                <div><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div>
+                <div class="flex flex-col items-center gap-2 text-center">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M5.12 5.12A8.92 8.92 0 0 1 12 4a8.92 8.92 0 0 1 6.88 1.12"></path><path d="M12 14a2.5 2.5 0 0 0 2.5-2.5c0-.6-.2-1.1-.5-1.5"></path><path d="m13 14 2-2.5-2.5 2"></path><path d="M12 17a5 5 0 0 0 5-5c0-1.2-.4-2.3-1-3.2"></path></svg>
+                    <span class="text-xs">Jakość i Rozwój</span>
+                </div>
+            </div>`
+    },
+    {
+        title: "Pełne Zaangażowanie",
+        description: "Pracuję transparentnie, dbam o komunikację i wspieram także po zakończeniu wdrożenia.",
+        details: "Wierzę w transparentną współpracę. Masz stały wgląd w postęp prac, regularnie omawiamy kolejne kroki i wspólnie podejmujemy kluczowe decyzje. Jestem Twoim partnerem technologicznym, a nie tylko wykonawcą.",
+        visualHTML: `
+            <div class="flex items-center justify-around w-full text-zinc-400">
+                <div class="flex flex-col items-center gap-2 text-center">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                    <span class="text-xs">Komunikacja</span>
+                </div>
+                <div><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div>
+                <div class="flex flex-col items-center gap-2 text-center">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                    <span class="text-xs">Regularność</span>
+                </div>
+                <div><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div>
+                <div class="flex flex-col items-center gap-2 text-center">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"></path><path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"></path><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+                    <span class="text-xs">Wsparcie</span>
+                </div>
+            </div>`
+    }
+];
+---
+<section id="partnerstwo" class="py-20 sm:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="partnership-title text-3xl sm:text-4xl font-bold tracking-tight">Partnerstwo, a nie tylko kod</h2>
+        </div>
+        <div class="lg:hidden flex flex-col gap-4">
+            {partnershipItems.map((item, index) => (
+                <div class="accordion-item border-b border-white/10 last:border-b-0">
+                    <div class="accordion-header cursor-pointer py-4 flex justify-between items-start gap-4">
+                        <div class="flex-grow">
+                            <h3 class="text-lg font-semibold text-primary">{item.title}</h3>
+                            <p class="text-sm text-secondary mt-1">{item.description}</p>
+                        </div>
+                        <svg class="accordion-icon w-5 h-5 text-secondary mt-1 flex-shrink-0 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" /></svg>
+                    </div>
+                    <div class="accordion-content overflow-hidden h-0">
+                        <p class="text-secondary pb-4 leading-relaxed">{item.details}</p>
+                    </div>
+                </div>
+            ))}
+        </div>
+        <div class="hidden lg:grid grid-cols-2 gap-16 lg:items-stretch">
+            <div class="partnership-triggers relative flex flex-col gap-12 justify-center">
+                <div class="active-indicator absolute left-0 top-0 w-1 h-12 bg-gradient-to-b from-accent-start to-accent-end rounded-full"></div>
+                
+                {partnershipItems.map((item, index) => (
+                  <div class="partnership-item pl-8" data-index={index}>
+                      <h3 class="text-2xl font-semibold text-primary">{item.title}</h3>
+                      <p class="mt-2 text-secondary">{item.description}</p>
+                  </div>
+                ))}
+            </div>
+
+            <div class="animation-container min-h-[24rem] rounded-2xl relative overflow-hidden bg-background border border-white/10 bg-[radial-gradient(#ffffff11_1px,transparent_1px)] [background-size:16px_16px] flex flex-col">
+                <div class="visuals-wrapper h-[35%] w-full relative">
+                    <div class="feature-visual-group absolute inset-0 hidden items-center justify-center p-4" data-index="0" set:html={partnershipItems[0].visualHTML} />
+                    <div class="feature-visual-group absolute inset-0 hidden items-center justify-center p-4" data-index="1" set:html={partnershipItems[1].visualHTML} />
+                    <div class="feature-visual-group absolute inset-0 hidden items-center justify-center p-4" data-index="2" set:html={partnershipItems[2].visualHTML} />
+                </div>
+                
+                <div class="backdrop-panel h-[65%] w-full relative bg-black/50 backdrop-blur-sm border-t border-white/10 p-12 md:p-8">
+                    <div class="details-wrapper relative h-full">
+                        {partnershipItems.map((item, index) => (
+                             <div class="feature-details absolute inset-0" data-index={index}>
+                                <h4 class="font-bold text-lg text-primary mb-2">{item.title}</h4>
+                                <p class="text-secondary leading-relaxed">{item.details}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,46 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const pageTitle = "Już Wkrótce | BiznesWizytowka.pl";
+const metaDescription = "Już niedługo ruszy dla Was coś ciekawego! Przygotowujemy nowe, ekscytujące sekcje: Sklep i Blog. Zapraszamy wkrótce!";
+---
+
+<Layout title={pageTitle} description={metaDescription}>
+    <Header />
+  <main class="relative h-screen w-full flex flex-col items-center justify-center text-center overflow-hidden bg-background p-4">
+    
+    <div id="three-canvas-container" class="absolute inset-0 z-0 opacity-20 blur-sm"></div>
+
+    <div class="relative z-10">
+      <h1 id="main-headline" class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-primary">
+        </h1>
+      <p id="sub-headline" class="mt-6 text-lg sm:text-xl text-secondary max-w-2xl mx-auto">
+        Znajdziesz tutaj <span class="font-semibold text-primary">Bloga</span>, w którym będę poruszał ciekawe kwestie dotyczące stron, aplikacji, widoczności w internecie i życia prywatnego.
+      </p>
+      <div id="back-link" class="mt-10">
+          <a href="/" class="inline-block bg-surface border border-white/10 text-primary px-6 py-3 rounded-lg text-sm font-semibold hover:bg-white/5 transition-colors">
+              Wróć na stronę główną
+          </a>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>  
+  /* Styl dla pojedynczych liter w nagłówku */
+  #main-headline .char {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  /* Upewnienie się, że płótno 3D wypełnia kontener */
+  #three-canvas-container canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+</style>

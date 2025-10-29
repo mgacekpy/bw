@@ -1,0 +1,183 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CTA from '../sections/CTA.astro';
+const pageTitle = "Kontakt – zapytaj o stronę, sklep lub aplikację | BiznesWizytowka.pl";
+const metaDescription =
+  "Napisz w sprawie projektu strony, sklepu lub aplikacji (web/desktop). Preferowany kontakt: e‑mail. Szybka odpowiedź i konkretne wskazówki.";
+const ogImage = "/og/contact-og.jpg";
+
+// Pomocnicze wartości do selectów (łatwo zmienisz)
+const topics = [
+  "Strona WWW",
+  "Sklep internetowy",
+  "Aplikacja webowa / SaaS",
+  "Aplikacja desktop",
+  "Wsparcie / opieka",
+  "Inne"
+];
+const budgets = [
+  "do 3 000 PLN",
+  "3 000 – 8 000 PLN",
+  "8 000 – 15 000 PLN",
+  "15 000 – 30 000 PLN",
+  "powyżej 30 000 PLN",
+  "nie wiem / do ustalenia"
+];
+// Główny kontakt – e-mail
+const emailAddress = "kontakt@bizneswizytowka.pl";
+---
+
+<Layout title={pageTitle} description={metaDescription} ogImage={ogImage}>
+  <Header />
+
+  <main>
+    <nav class="sr-only" aria-label="okruszki">
+      <ol>
+        <li><a href="/">Strona główna</a></li>
+        <li aria-current="page">Kontakt</li>
+      </ol>
+    </nav>
+
+    <section class="pt-32 pb-20 text-center">
+      <div class="relative z-10 text-center px-4 w-full md:w-5/6 lg:w-4/5 mx-auto">
+        <h1 id="page-hero-title" class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
+          Skontaktuj się ze mną
+        </h1>
+        <p id="page-hero-subtitle" class="mt-6 text-lg text-secondary">
+          Najszybciej odpiszę na <strong>e‑mail</strong>. Opisz krótko cele i funkcje, które są dla Ciebie ważne
+          — zaproponuję rozwiązanie i orientacyjny koszt.
+        </p>
+        <p id="page-hero-email" class="mt-3">
+          <a class="text-primary font-semibold hover:underline" href={`mailto:${emailAddress}`}>{emailAddress}</a>
+        </p>
+      </div>
+    </section>
+
+    <section class="pb-20 sm:pb-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-3 gap-10">
+        <div class="lg:col-span-2">
+          <form id="contact-form" class="content-box bg-surface/50 border border-white/10 p-8 rounded-2xl" novalidate>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label for="name" class="block text-sm font-medium text-primary">Imię i nazwisko</label>
+                <input id="name" name="name" type="text" autocomplete="name" required
+                        class="mt-2 w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-primary placeholder:text-secondary/60 focus:outline-none focus:border-white/20" placeholder="Jan Kowalski" />
+              </div>
+
+              <div>
+                <label for="email" class="block text-sm font-medium text-primary">E‑mail</label>
+                <input id="email" name="email" type="email" autocomplete="email" required
+                        class="mt-2 w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-primary placeholder:text-secondary/60 focus:outline-none focus:border-white/20" placeholder="jan@firma.pl" />
+              </div>
+
+              <div>
+                <label for="phone" class="block text-sm font-medium text-primary">Telefon <span class="text-secondary">(opcjonalnie)</span></label>
+                <input id="phone" name="phone" type="tel" inputmode="tel"
+                         class="mt-2 w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-primary placeholder:text-secondary/60 focus:outline-none focus:border-white/20" placeholder="+48 ..." />
+              </div>
+
+              <div>
+                <label for="topic" class="block text-sm font-medium text-primary">Temat</label>
+                <select id="topic" name="topic" class="mt-2 w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-primary focus:outline-none focus:border-white/20">
+                   {topics.map(t => <option class="bg-surface text-primary" value={t}>{t}</option>)}
+                </select>
+              </div>
+
+              <div>
+                <label for="budget" class="block text-sm font-medium text-primary">Budżet <span class="text-secondary">(orientacyjnie)</span></label>
+                 <select id="budget" name="budget" class="mt-2 w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-primary focus:outline-none focus:border-white/20">
+                  {budgets.map(b => <option class="bg-surface text-primary" value={b}>{b}</option>)}
+                </select>
+              </div>
+
+              <div class="md:col-span-2">
+                <label for="message" class="block text-sm font-medium text-primary">Wiadomość</label>
+                 <textarea id="message" name="message" rows="6" required
+                          class="mt-2 w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-primary placeholder:text-secondary/60 focus:outline-none focus:border-white/20"
+                          placeholder="Opisz krótko: cel projektu, najważniejsze funkcje, terminy."></textarea>
+              </div>
+            </div>
+
+            <div class="mt-6 space-y-4">
+              <div class="hidden">
+                <label for="website">Twoja strona (zostaw puste)</label>
+                <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
+              </div>
+
+              <input type="hidden" id="ts" name="ts" value="" />
+
+              <label class="flex items-start gap-3">
+                 <input id="consent" name="consent" type="checkbox" required class="mt-1" />
+                <span class="text-sm text-secondary">
+                  Wyrażam zgodę na kontakt w sprawie zapytania i przetwarzanie danych zgodnie z
+                  <a href="/polityka-prywatnosci" class="text-primary hover:underline">Polityką prywatności</a>.
+                </span>
+              </label>
+            </div>
+
+            <div id="form-status" class="mt-6 hidden">
+              <div id="form-success" class="rounded-xl border border-green-700/40 bg-green-900/20 p-4 text-green-200 hidden">
+                Dziękuję! Wrócę z odpowiedzią możliwie szybko (zwykle tego samego dnia roboczego).
+              </div>
+              <div id="form-error" class="rounded-xl border border-red-700/40 bg-red-900/20 p-4 text-red-200 hidden">
+                Coś poszło nie tak. Spróbuj ponownie lub napisz bezpośrednio na
+                <a class="underline" href={`mailto:${emailAddress}`}> {emailAddress}</a>.
+              </div>
+            </div>
+
+            <div class="mt-6 flex items-center gap-4">
+              <button id="submit-btn" type="submit"
+                      class="inline-flex items-center justify-center px-5 py-3 rounded-xl bg-primary/90 hover:bg-primary transition text-black font-semibold">
+                Wyślij wiadomość
+                </button>
+              <a href={`mailto:${emailAddress}`} class="text-primary hover:underline text-sm">Wolisz napisać bezpośrednio?</a>
+            </div>
+          </form>
+        </div>
+
+        <aside class="space-y-6">
+          <div class="content-box bg-surface/50 border border-white/10 p-8 rounded-2xl">
+             <h2 class="text-2xl font-bold text-primary">Jak wygląda kontakt?</h2>
+            <ul class="mt-4 space-y-2 text-secondary">
+              <li class="flex gap-2"><span>•</span><span>Preferuję e‑mail — mamy jasne, uporządkowane ustalenia.</span></li>
+              <li class="flex gap-2"><span>•</span><span>Po Twojej wiadomości przygotuję krótką propozycję rozwiązania.</span></li>
+              <li class="flex gap-2"><span>•</span><span>Po akceptacji zaczynam projekt i informuję o kolejnych krokach.</span></li>
+            </ul>
+          </div>
+
+          <div class="content-box bg-surface/50 border border-white/10 p-8 rounded-2xl">
+            <h2 class="text-2xl font-bold text-primary">Co warto dodać w wiadomości?</h2>
+            <ul class="mt-4 space-y-2 text-secondary">
+              <li class="flex gap-2"><span>•</span><span>Cel projektu (co ma osiągnąć strona/aplikacja).</span></li>
+              <li class="flex gap-2"><span>•</span><span>2–3 kluczowe funkcje lub integracje.</span></li>
+              <li class="flex gap-2"><span>•</span><span>Przybliżony budżet i termin.</span></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <CTA />
+  </main>
+
+  <Footer />
+
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "name": "Kontakt – BiznesWizytowka.pl",
+      "url": "https://bizneswizytowka.pl/kontakt",
+      "mainEntity": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "email": emailAddress,
+        "availableLanguage": ["pl-PL"]
+      }
+    })}
+  </script>
+</Layout>
+
+

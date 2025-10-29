@@ -1,0 +1,68 @@
+---
+const metrics = [
+    { value: 100, unit: '%', label: 'Wydajność', color: 'cyan' },
+    { value: 100, unit: '%', label: 'Ułatwienia dostępu', color: 'green' },
+    { value: 100, unit: '%', label: 'Sprawdzone metody', color: 'blue' },
+    { value: 100, unit: '%', label: 'SEO', color: 'purple' },
+    { id: 'fcp-metric', value: 0, unit: 's', label: 'Czas ładowania strony', color: 'pink' }
+];
+
+const colorVariants = {
+    cyan: 'from-cyan-500/50',
+    green: 'from-green-500/50',
+    blue: 'from-blue-500/50',
+    purple: 'from-purple-500/50',
+    pink: 'from-pink-500/50',
+}
+---
+
+<section id="metrics" class="py-20 sm:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center mb-16">
+            <h2 class="metrics-title text-3xl sm:text-4xl font-bold tracking-tight">Jakość, którą widać w danych</h2>
+            <p class="metrics-subtitle mt-4 text-lg text-secondary">
+                Stawiam na techniczną doskonałość. Poniższe metryki, mierzone za pomocą narzędzi Google, pokazują realną wydajność i jakość moich projektów – w tym stronę, którą właśnie przeglądasz.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-8">
+            {metrics.map((metric) => (
+                <div class="metric-card relative rounded-2xl bg-[#080808] p-4 text-center shadow-xl">
+                    <svg class="absolute inset-0 w-full h-full" fill="none">
+                        <rect class="background-border" rx="15" ry="15"/>
+                        <rect class="animated-border" rx="15" ry="15"/>
+                    </svg>
+
+                    <div class={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${colorVariants[metric.color]} to-transparent blur-md`}></div>
+                    
+                    <div class="relative">
+                        <p class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter">
+                            <span class="metric-value" data-target={metric.value} id={metric.id || null}>0</span>
+                            <span class="text-xl md:text-2xl lg:text-3xl text-secondary">{metric.unit}</span>
+                        </p>
+                        <p class="mt-2 text-xs md:text-sm text-secondary">{metric.label}</p>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<style>
+    .background-border, .animated-border {
+        x: 1;
+        y: 1;
+        width: calc(100% - 2px);
+        height: calc(100% - 2px);
+        stroke-width: 2;
+        vector-effect: non-scaling-stroke;
+    }
+    .background-border {
+        stroke: rgba(255, 255, 255, 0.1);
+    }
+    .animated-border {
+        stroke: #4ade80;
+        stroke-dashoffset: 1000;
+    }
+</style>
+

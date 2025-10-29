@@ -1,0 +1,13 @@
+# Zależności
+node_modules/
+
+# Folder produkcyjny
+dist/
+
+# Pliki środowiskowe
+.env
+.env.*
+
+# Ignoruj spakowane pliki do pobrania
+*.zip
+*.7z

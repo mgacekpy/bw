@@ -1,0 +1,84 @@
+---
+const portfolioItems = [
+    { image: "/portfolio/Strona-internetowa-firmy-instalacyjnej-ES-Serwis.jpg", title: "ES-Serwis", type: 'w', alt: "Strona internetowa firmy instalacyjnej ES Serwis – projekt i wdrożenie" },
+    { image: "/portfolio/Logo-firmy-ES-Serwis-projekt-graficzny.png", title: "ES-Serwis Logo", type: 'n', alt: "Logo firmy ES Serwis – projekt graficzny" },
+    { image: "/portfolio/Strona-dla-firmy-sprzatajacej-Masz-Pozamiatane.jpg", title: "Masz Pozamiatane", type: 'w', alt: "Strona firmy sprzątającej Masz Pozamiatane – usługi sprzątające" },
+    { image: "/portfolio/Wizytowka-QR-dla-ES-Serwis-projekt-graficzny.png", title: "Wizytówka QR", type: 'n', alt: "Wizytówka z kodem QR dla ES Serwis – projekt graficzny" },
+    { image: "/portfolio/Fotografia-floty-firmowej-ES-Serwis.jpg", title: "Fotografia Floty", type: 'n', alt: "Fotografia floty firmowej ES Serwis – samochody służbowe" },
+    { image: "/portfolio/Strona-internetowa-uslug-geodezyjnych-Geodezja-KJ.jpg", title: "Geodezja KJ", type: 'w', alt: "Strona usług geodezyjnych Geodezja KJ – oferta i kontakt" },
+    { image: "/portfolio/Logo-marki-Gielda-Zlecen-projekt-graficzny.png", title: "Giełda Zleceń Logo", type: 'n', alt: "Logo marki Giełda Zleceń – projekt" },
+    { image: "/portfolio/Strona-internetowa-specjalisty-IT-Webmaster4You.jpg", title: "Webmaster4You", type: 'w', alt: "Strona specjalisty IT Webmaster4You – projekt i wdrożenie" },
+];
+
+const columnLayout = [
+    [portfolioItems[0], portfolioItems[4]],
+    [portfolioItems[1], portfolioItems[5]],
+    [portfolioItems[2], portfolioItems[6]],
+    [portfolioItems[3], portfolioItems[7]],
+];
+---
+<section id="portfolio" class="py-20 sm:py-32 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="portfolio-title text-3xl sm:text-4xl font-bold tracking-tight">Wybrane Realizacje</h2>
+        </div>
+    </div>
+    
+    <div class="relative">
+        <div class="portfolio-gradient absolute top-0 bottom-0 left-0 w-8 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none lg:hidden"></div>
+        <div class="portfolio-gradient absolute top-0 bottom-0 right-0 w-8 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none lg:hidden"></div>
+
+        <div class="portfolio-container">
+            <div class="hidden lg:grid grid-cols-4 gap-[5px]">
+                {columnLayout.map((columnItems) => (
+                    <div class="flex flex-col gap-[5px]">
+                        {columnItems.map(item => (
+                            <a href="/portfolio" class:list={[
+                                "portfolio-item group relative block overflow-hidden",
+                                item.type === 'w' ? 'aspect-[3/4]' : 'aspect-[4/3]'
+                            ]}>
+                                <img src={item.image} alt={item.alt} loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover" />
+                                <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"></div>
+                                <div class="absolute inset-0 flex items-center justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out">
+                                    <h3 class="text-white font-bold text-center text-lg">{item.title}</h3>
+                                </div>
+                            </a>
+                        ))}
+                    </div>
+                ))}
+            </div>
+
+            <div class="lg:hidden flex overflow-x-auto gap-[10px] px-4 scroll-snap-type-x-mandatory">
+                {portfolioItems.map(item => (
+                     <a href="#" class:list={[
+                        "portfolio-item-mobile group relative block overflow-hidden flex-shrink-0 w-[80vw] sm:w-[45vw] rounded-lg",
+                        item.type === 'w' ? 'aspect-[3/4]' : 'aspect-[4/3]'
+                    ]}>
+                        <img src={item.image} alt={item.alt} loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover" />
+                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"></div>
+                        <div class="absolute inset-0 flex items-center justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out">
+                            <h3 class="text-white font-bold text-center text-lg">{item.title}</h3>
+                        </div>
+                    </a>
+                ))}
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .scroll-snap-type-x-mandatory {
+        scroll-snap-type: x mandatory;
+    }
+    .scroll-snap-type-x-mandatory > a {
+        scroll-snap-align: center;
+    }
+    .lg\:hidden.flex::-webkit-scrollbar {
+        display: none;
+    }
+    .lg\:hidden.flex {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+</style>
+

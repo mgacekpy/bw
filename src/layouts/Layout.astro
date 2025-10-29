@@ -1,0 +1,124 @@
+---
+import '../styles/globals.css';
+import { ViewTransitions } from 'astro:transitions';
+import CookieConsent from '../components/CookieConsent.astro';
+
+interface Props {
+	title: string;
+    description?: string;
+    ogImage?: string;
+}
+
+const { title, description = "Tworzenie stron, sklepów, aplikacji webowych i desktopowych. Nowoczesne technologie, realne wyniki biznesowe.", ogImage = "/og/og-image.jpg" } = Astro.props;
+const canonical = Astro.url?.href ?? "https://bizneswizytowka.pl/";
+const siteName = "BiznesWizytowka.pl";
+---
+
+<!doctype html>
+<html lang="pl">
+<head>
+    <ViewTransitions />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="icon" type="image/svg+xml" href="/logotype/Favicon-marki-BiznesWizytowka-pl-tworzenie-stron-i-aplikacji-dla-firm.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="preload" href="/fonts/inter-v19-latin_latin-ext-regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/inter-v19-latin_latin-ext-700.woff2" as="font" type="font/woff2" crossorigin />
+    
+    <style is:inline>
+        @font-face {
+          font-family: 'Inter';
+          font-style: normal;
+          font-weight: 400;
+          font-display: swap;
+          src: url('/fonts/inter-v19-latin_latin-ext-regular.woff2') format('woff2');
+        }
+        @font-face {
+          font-family: 'Inter';
+          font-style: normal;
+          font-weight: 500;
+          font-display: swap;
+          src: url('/fonts/inter-v19-latin_latin-ext-500.woff2') format('woff2');
+        }
+        @font-face {
+          font-family: 'Inter';
+          font-style: normal;
+          font-weight: 600;
+          font-display: swap;
+          src: url('/fonts/inter-v19-latin_latin-ext-600.woff2') format('woff2');
+        }
+        @font-face {
+          font-family: 'Inter';
+          font-style: normal;
+          font-weight: 700;
+          font-display: swap;
+          src: url('/fonts/inter-v19-latin_latin-ext-700.woff2') format('woff2');
+        }
+         @font-face {
+          font-family: 'Inter';
+          font-style: normal;
+          font-weight: 800;
+          font-display: swap;
+          src: url('/fonts/inter-v19-latin_latin-ext-800.woff2') format('woff2');
+        }
+    </style>
+
+      
+    <!-- JSON‑LD -->
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": siteName,
+      "url": "https://bizneswizytowka.pl/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://bizneswizytowka.pl/szukaj?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    })}
+  </script>
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "BiznesWizytowka.pl",
+      "url": "https://bizneswizytowka.pl/",
+      "logo": "https://bizneswizytowka.pl/logotype/Logo-marki-BiznesWizytowka-pl-tworzenie-stron-i-aplikacji-dla-firm.svg",
+      "sameAs": []
+    })}
+  </script>
+    
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <slot name="head" />
+</head>
+<body class="bg-background text-primary overflow-x-hidden antialiased">
+    <slot />
+    <CookieConsent />
+    <script src="../scripts/main.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NGJ9WETJ71"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-NGJ9WETJ71');
+    </script>
+</body>
+</html>

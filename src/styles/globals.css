@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-primary overflow-x-hidden antialiased;
+  }
+  ::selection {
+    @apply bg-accent-start/30;
+  }
+}
+
+/* --- KLUCZOWE POPRAWKI DLA ASTRO VIEW TRANSITIONS I GSAP --- */
+
+/* 1. Wyłączamy domyślną animację "fade" od Astro. GSAP przejmuje pełną kontrolę. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* 2. Definiujemy prostą animację wyjścia dla starej strony. */
+::view-transition-old(root) {
+  animation: fade-out 0.25s ease-out forwards;
+}
+
+@keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* 3. Wymuszamy niewidoczność elementów na nowej stronie, która właśnie wchodzi.
+      To jest główny mechanizm eliminujący "błysk". */
+html.astro-entering .animate-on-load,
+html.astro-entering .animate-on-scroll {
+  opacity: 0;
+}
+.filter-btn:focus-visible {
+  outline: 2px solid #A78BFA; /* Kolor fioletowy (accent-start) */
+  outline-offset: 2px;
+}
+.partnership-item {
+  cursor: pointer;
+}
