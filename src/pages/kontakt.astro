@@ -160,6 +160,47 @@ const emailAddress = "kontakt@bizneswizytowka.pl";
     </section>
 
     <CTA />
+    <script type="module" is:inline>
+  const form = document.getElementById("contact-form");
+  const submitBtn = document.getElementById("submit-btn");
+  const statusBox = document.getElementById("form-status");
+  const successMsg = document.getElementById("form-success");
+  const errorMsg = document.getElementById("form-error");
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    statusBox.classList.remove("hidden");
+    successMsg.classList.add("hidden");
+    errorMsg.classList.add("hidden");
+
+    // Zbierz dane
+    const fd = new FormData(form);
+    const body = Object.fromEntries(fd.entries());
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body)
+      });
+
+      if (res.ok) {
+        successMsg.classList.remove("hidden");
+        errorMsg.classList.add("hidden");
+        form.reset();
+      } else {
+        errorMsg.classList.remove("hidden");
+        successMsg.classList.add("hidden");
+      }
+    } catch (err) {
+      errorMsg.classList.remove("hidden");
+      successMsg.classList.add("hidden");
+    } finally {
+      submitBtn.disabled = false;
+    }
+  });
+</script>
   </main>
 
   <Footer />

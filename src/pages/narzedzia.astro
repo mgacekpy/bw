@@ -32,7 +32,6 @@ type Category = {
 };
 // -----------------------------------------
 
-
 const emailSort: FirstPartyTool = {
   id: "email-sort-pro",
   name: "Email Sort Pro",
@@ -298,6 +297,7 @@ const pageOg = "/og/tools-og.jpg";
                   <div><h3 class="text-xl font-semibold text-primary">Czy te narzędzia mogę wdrożyć w mojej firmie samodzielnie?</h3><p class="mt-2 text-secondary">Tak, ale przy większej skali lepiej zaplanować strukturę, uprawnienia i automatyzacje – mogę w tym pomóc.</p></div>
                   <div><h3 class="text-xl font-semibold text-primary">Na jakiej podstawie dobierasz narzędzia do listy?</h3><p class="mt-2 text-secondary">Priorytet: użyteczność w SMB, łatwość wdrożenia, dobra dokumentacja, rozsądny koszt i stabilny rozwój produktu.</p></div>
                   <div><h3 class="text-xl font-semibold text-primary">Czy oferujesz wdrożenie i szkolenie z narzędzi?</h3><p class="mt-2 text-secondary">Tak – konfiguracja, szablony, automatyzacje, szkolenie zespołu. Napisz w <a class="text-primary hover:underline" href="/kontakt">kontakcie</a>.</p></div>
+                  <div><h3 class="text-xl font-semibold text-primary">Jak poprosić o rekomendacje dla mojej branży?</h3><p class="mt-2 text-secondary">Wystarczy opisać procesy i wielkość zespołu przez formularz kontaktowy.</p></div>
                 </div>
               </div>
             )}
@@ -310,15 +310,15 @@ const pageOg = "/og/tools-og.jpg";
   <Footer />
   <script type="application/ld+json" set:html={JSON.stringify({"@context":"https://schema.org","@type":"SoftwareApplication","name":emailSort.name,"operatingSystem":"Windows, macOS","applicationCategory":"BusinessApplication","isAccessibleForFree":true,"description":`${emailSort.tagline} ${emailSort.description}`.replace(/\n/g," "),"image":`https://bizneswizytowka.pl${emailSort.image.src}`,"url":`https://bizneswizytowka.pl/narzedzia#tool-${emailSort.id}`})}/>
   <script type="application/ld+json" set:html={JSON.stringify({"@context":"https://schema.org","@type":"ItemList","itemListElement":categories.map((c,i)=>({"@type":"ListItem","position":i+1,"name":c.name,"url":`https://bizneswizytowka.pl/narzedzia#${c.id}`}))})}/>
-  <script type="application/ld+json" set:html={JSON.stringify({"@context":"https://schema.org","@type":"QAPage","mainEntity":[{"@type":"Question","name":"Czy Email Sort Pro działa z każdym klientem pocztowym?","acceptedAnswer":{"@type":"Answer","text":"Tak. Program łączy się z dowolnym kontem e‑mail (IMAP/POP3), niezależnie od używanego klienta."}},{"@type":"Question","name":"Czy wersja darmowa jest ograniczona czasowo?","acceptedAnswer":{"@type":"Answer","text":"Nie. Wersja Free nie ma limitu czasu – obowiązuje limit 100 załączników tygodniowo."}},{"@type":"Question","name":"Jak kupić licencję Pro?","acceptedAnswer":{"@type":"Answer","text":"Tymczasowo przez formularz kontaktowy. Wersja sklepu będzie dostępna wkrótce."}},{"@type":"Question","name":"Czy mogę łączyć kilka kont e‑mail?","acceptedAnswer":{"@type":"Answer","text":"Tak. Program obsługuje wiele skrzynek jednocześnie."}},{"@type": "Question", "name": "Czy program może działać cyklicznie lub w tle?","acceptedAnswer": {"@type": "Answer","text": "Tak. Można ustawić uruchomienia cykliczne (np. harmonogram systemowy)."}},{"@type": "Question","name": "Czy narzędzia firm trzecich są płatne?","acceptedAnswer": {"@type": "Answer","text": "Zwykle mają plany darmowe i płatne; warto zacząć od wersji Free."}},{"@type":"Question","name":"Czy wdrożę te narzędzia samodzielnie?","acceptedAnswer":{"@type":"Answer","text":"Tak, lecz przy większej skali warto zaplanować strukturę i automatyzacje."}},{"@type":"Question","name":"Na jakiej podstawie dobrano narzędzia?","acceptedAnswer":{"@type":"Answer","text":"Priorytet: użyteczność w SMB, łatwość wdrożenia, dobra dokumentacja i rozwój."}},{"@type":"Question","name":"Czy planowane są kolejne autorskie narzędzia?","acceptedAnswer":{"@type":"Answer","text":"Tak. Lista będzie systematycznie rozwijana."}},{"@type":"Question","name":"Czy Email Sort Pro działa na Windows i macOS?","acceptedAnswer":{"@type":"Answer","text":"Tak, obsługiwane są oba systemy."}},{"@type":"Question","name":"Czy oferujesz wdrożenia i szkolenia?","acceptedAnswer":{"@type":"Answer","text":"Tak – konfiguracja, szablony, automatyzacje, szkolenie zespołu."}},{"@type":"Question","name":"Jak poprosić o rekomendacje dla mojej branży?","acceptedAnswer":{"@type":"Answer","text":"Wystarczy opisać procesy i wielkość zespołu przez formularz kontaktowy."}}]})}/>
+  <script type="application/ld+json" set:html={JSON.stringify({"@context":"https://schema.org","@type":"QAPage","mainEntity":[{"@type":"Question","name":"Czy Email Sort Pro działa z każdym klientem pocztowym?","acceptedAnswer":{"@type":"Answer","text":"Tak. Program łączy się z dowolnym kontem e‑mail (IMAP/POP3), niezależnie od używanego klienta."}},{"@type":"Question","name":"Czy wersja darmowa jest ograniczona czasowo?","acceptedAnswer":{"@type":"Answer","text":"Nie. Wersja Free nie ma limitu czasu – obowiązuje limit 100 załączników tygodniowo."}},{"@type":"Question","name":"Jak kupić licencję Pro?","acceptedAnswer":{"@type":"Answer","text":"Tymczasowo przez formularz kontaktowy. Wersja sklepu będzie dostępna wkrótce."}},{"@type":"Question","name":"Czy mogę łączyć kilka kont e‑mail?","acceptedAnswer":{"@type":"Answer","text":"Tak. Program obsługuje wiele skrzynek jednocześnie."}},{"@type": "Question", "name": "Czy program może działać cyklicznie lub w tle?","acceptedAnswer": {"@type": "Answer","text": "Tak. Można ustawić uruchomienia cykliczne (np. harmonogram systemowy)."}},{"@type": "Question","name": "Czy narzędzia firm trzecich są płatne?","acceptedAnswer": {"@type": "Answer","text": "Zwykle mają plany darmowe i płatne; warto zacząć od wersji Free."}},{"@type":"Question","name":"Czy wdrożę te narzędzia samodzielnie?","acceptedAnswer":{"@type":"Answer","text": "Tak, lecz przy większej skali warto zaplanować strukturę i automatyzacje."}},{"@type":"Question","name":"Na jakiej podstawie dobrano narzędzia do listy?","acceptedAnswer":{"@type": "Answer","text": "Priorytet: użyteczność w SMB, łatwość wdrożenia, dobra dokumentacja i rozwój."}},{"@type":"Question","name":"Czy planowane są kolejne autorskie narzędzia?","acceptedAnswer":{"@type": "Answer","text": "Tak. Lista będzie systematycznie rozwijana."}},{"@type":"Question","name":"Czy Email Sort Pro działa na Windows i macOS?","acceptedAnswer":{"@type":"Answer","text": "Tak, obsługiwane są oba systemy."}},{"@type":"Question","name":"Czy oferujesz wdrożenia i szkolenie z narzędzi?","acceptedAnswer":{"@type": "Answer","text": "Tak – konfiguracja, szablony, automatyzacje, szkolenie zespołu."}},{"@type":"Question","name":"Jak poprosić o rekomendacje dla mojej branży?","acceptedAnswer":{"@type":"Answer","text": "Wystarczy opisać procesy i wielkość zespołu przez formularz kontaktowy."}}]})}/>
 </Layout>
-
 
 <style>
   .no-scrollbar::-webkit-scrollbar { display: none; }
   .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   details > summary { outline: none; }
   article[id], [id^="panel-"] { scroll-margin-top: calc(var(--header-height, 80px) + 24px); }
+
 
   /* Animacje przejść paneli */
   .fade-panel { will-change: opacity, transform; }
@@ -327,14 +327,17 @@ const pageOg = "/og/tools-og.jpg";
   @keyframes fadeIn  { from { opacity: 0; transform: translateY(6px);} to { opacity: 1; transform: translateY(0);} }
   @keyframes fadeOut { from { opacity: 1; transform: translateY(0);} to { opacity: 0; transform: translateY(6px);} }
 
+
   /* Płynność akordeonów */
   .accordion-content { transition: height .35s ease; }
+
 
   /* Pionowe zakładki na mobile */
   @media (max-width: 639px) {
     #tab-list-container { align-items: stretch; }
     .tab-btn { width: 100%; }
   }
+
 
   /* Wygaszenie gradientu przewijania (poziom tylko od sm) */
   #tab-scroll-fade { transition: opacity .2s; }

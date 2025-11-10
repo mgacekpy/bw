@@ -24,9 +24,7 @@ const isActive = (href) => (href === '/' ? currentPath === '/' : currentPath.sta
       <a href="/portfolio" class={`nav-link px-3 py-2 rounded-md text-sm font-medium transition-colors relative ${isActive('/portfolio') ? 'text-primary' : 'text-secondary hover:text-primary'}`}>
         Portfolio<span class="underline-span absolute bottom-1 left-0 w-full h-0.5 bg-accent-end rounded-full"></span>
       </a>
-      <a href="/sklep" class={`nav-link px-3 py-2 rounded-md text-sm font-medium transition-colors relative ${isActive('/sklep') ? 'text-primary' : 'text-secondary hover:text-primary'}`}>
-        Sklep<span class="underline-span absolute bottom-1 left-0 w-full h-0.5 bg-accent-end rounded-full"></span>
-      </a>
+      <!-- Sklep usunięty z menu -->
       <a href="/blog" class={`nav-link px-3 py-2 rounded-md text-sm font-medium transition-colors relative ${isActive('/blog') ? 'text-primary' : 'text-secondary hover:text-primary'}`}>
         Blog<span class="underline-span absolute bottom-1 left-0 w-full h-0.5 bg-accent-end rounded-full"></span>
       </a>
@@ -58,7 +56,7 @@ const isActive = (href) => (href === '/' ? currentPath === '/' : currentPath.sta
   <a href="/uslugi" class="mobile-link">Usługi</a>
   <a href="/narzedzia" class="mobile-link">Narzędzia</a>
   <a href="/portfolio" class="mobile-link">Portfolio</a>
-  <a href="/sklep" class="mobile-link">Sklep</a>
+  <!-- Sklep usunięty z menu -->
   <a href="/blog" class="mobile-link">Blog</a>
   <a href="/o-mnie" class="mobile-link">O mnie</a>
   <a href="/kontakt" class="mobile-link">Kontakt</a>
@@ -66,7 +64,6 @@ const isActive = (href) => (href === '/' ? currentPath === '/' : currentPath.sta
 </div>
 
 <style>
-
   /* Podkreślenie jest domyślnie ukryte */
   .nav-link .underline-span {
     transform: scaleX(0);
@@ -83,8 +80,5 @@ const isActive = (href) => (href === '/' ? currentPath === '/' : currentPath.sta
   /* Upewniamy się, że po zejściu myszką z nieaktywnego linku, podkreślenie znowu znika */
   .nav-link:not(.text-primary):hover .underline-span {
     transform: scaleX(1);
-  }
-  .nav-link:not(.text-primary) .underline-span {
-    /* Ten styl jest już wyżej, ale dla pewności go zostawiamy */
   }
 </style>
