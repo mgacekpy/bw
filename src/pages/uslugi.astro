@@ -96,9 +96,12 @@ const servicesData = [
               <ul class="space-y-4">
                 {servicesData.map(service => (
                   <li>
-                    <a href={`#${service.id}`} class="service-nav-link text-secondary hover:text-primary transition-colors duration-300" data-link-id={service.id}>
-                      {service.title}
-                    </a>
+                    <a
+                      href={`#${service.id}`}
+                      class="service-nav-link text-secondary hover:text-primary transition-colors duration-300"
+                      data-link-id={service.id}
+                      >{service.title}</a
+                    >
                   </li>
                 ))}
               </ul>
@@ -107,10 +110,24 @@ const servicesData = [
 
           <div class="lg:col-span-2 space-y-16">
             {servicesData.map(service => (
-              <article id={service.id} class="service-content-card bg-surface/50 border border-white/10 p-8 rounded-2xl" itemscope itemtype="https://schema.org/Service">
+              <article
+                id={service.id}
+                class="service-content-card bg-surface/50 border border-white/10 p-8 rounded-2xl"
+                itemscope
+                itemtype="https://schema.org/Service"
+              >
                 <meta itemprop="serviceType" content={service.title} />
                 <div class="flex items-center gap-4">
-                  <img src={service.iconSrc} alt={service.altText} width="40" height="40" loading="lazy" decoding="async" class="w-10 h-10" itemprop="image" />
+                  <img
+                    src={service.iconSrc}
+                    alt={service.altText}
+                    width="40"
+                    height="40"
+                    loading="lazy"
+                    decoding="async"
+                    class="w-10 h-10"
+                    itemprop="image"
+                  />
                   <h2 class="text-2xl font-bold text-primary" itemprop="name">{service.title}</h2>
                 </div>
                 <p class="mt-4 text-secondary leading-relaxed" itemprop="description">{service.description}</p>
@@ -118,7 +135,14 @@ const servicesData = [
                 <ul class="space-y-2">
                   {service.features.map(feature => (
                     <li class="flex items-start gap-3">
-                      <svg class="w-5 h-5 text-green-400 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                      <svg
+                        class="w-5 h-5 text-green-400 mt-1 flex-shrink-0"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                      >
                         <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                       </svg>
                       <span class="text-secondary">{feature}</span>
@@ -212,17 +236,62 @@ const servicesData = [
   <Footer />
 </Layout>
 
+<script>
+import { gsap } from 'gsap';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 
+gsap.registerPlugin(ScrollToPlugin);
+
+document.addEventListener('DOMContentLoaded', () => {
+  const sections = Array.from(document.querySelectorAll('article[id]')) as HTMLElement[];
+  const navLinks = Array.from(document.querySelectorAll('.service-nav-link'));
+
+  function onScroll() {
+    const scrollPos = window.scrollY + 110;
+    let currentSectionID = '';
+
+    for (const section of sections) {
+      if (section.offsetTop <= scrollPos) {
+        currentSectionID = section.id;
+      }
+    }
+
+    navLinks.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('data-link-id') === currentSectionID);
+    });
+  }
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const targetID = link.getAttribute('href').substring(1);
+      const targetElement = document.getElementById(targetID);
+      if (targetElement) {
+        gsap.to(window, {
+          duration: 1,
+          scrollTo: { y: targetElement, offsetY: 80 }
+        });
+      }
+    });
+  });
+
+  window.addEventListener('scroll', onScroll);
+  onScroll();
+});
+</script>
 
 <style>
-  /* Aktywny link w bocznym menu */
-  .service-nav-link.active {
-    color: #E2E2E2;
-    font-weight: 600;
-  }
+  html {
+  scroll-behavior: smooth;
+}
 
-  /* Korekta pozycji przy scrollowaniu do sekcji */
-  article[id] {
-    scroll-margin-top: calc(var(--header-height, 80px) + 24px);
-  }
+article[id] {
+  scroll-margin-top: 110px; /* powinno odpowiadać wysokości nagłówka + padding */
+}
+
+.service-nav-link.active {
+  color: #E2E2E2;
+  font-weight: 600;
+}
+
 </style>

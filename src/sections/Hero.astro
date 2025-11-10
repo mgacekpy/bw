@@ -1,16 +1,144 @@
-<section class="relative h-screen w-full flex items-center justify-center overflow-hidden bg-background">
-    <div class="relative z-10 text-center px-4 w-full md:w-5/6 lg:w-4/5">
-        <h1 id="hero-title" class="text-balance text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
-            Twoja firma zasługuje na technologię, która przyciąga klientów i zwiększa zyski.
-        </h1>
-        <p id="hero-subtitle" class="mt-6 text-lg text-white/70 max-w-2xl mx-auto">
-            Tworzę nowoczesne strony internetowe, sklepy online, aplikacje webowe i desktopowe, które wspierają rozwój firm – od lokalnych biznesów po ambitne startupy. Moje projekty są nie tylko estetyczne, ale przede wszystkim skuteczne i dostosowane do Twoich realnych celów.
-        </p>
-        <div id="hero-button" class="mt-10">
-            <a href="/kontakt" class="rounded-md bg-white px-4 py-2 text-sm font-semibold text-background shadow-sm hover:bg-gray-200 transition-colors">
-                Bezpłatna Wycena
-            </a>
-        </div>
+---
+
+---
+
+<style>
+  .hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--background);
+  }
+
+  canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: 0;
+  }
+
+  .content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0 1rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  h1, p {
+    color: white;
+  }
+</style>
+
+<section class="hero">
+  <canvas id="neuralCanvas"></canvas>
+  <div class="content">
+    <h1 id="hero-title" class="text-balance text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+      Twoja firma zasługuje na technologię, która przyciąga klientów i zwiększa zyski.
+    </h1>
+    <p id="hero-subtitle" class="mt-6 text-lg text-white/70 max-w-2xl mx-auto">
+      Tworzę nowoczesne strony internetowe, sklepy online, aplikacje webowe i desktopowe, które wspierają rozwój firm – od lokalnych biznesów po ambitne startupy. Moje projekty są nie tylko estetyczne, ale przede wszystkim skuteczne i dostosowane do Twoich realnych celów.
+    </p>
+    <div id="hero-button" class="mt-10">
+      <a href="/kontakt" class="rounded-md bg-white px-4 py-2 text-sm font-semibold text-background shadow-sm hover:bg-gray-200 transition-colors">
+        Bezpłatna Wycena
+      </a>
     </div>
+  </div>
 </section>
 
+<script>
+    const canvas = document.getElementById('neuralCanvas') as HTMLCanvasElement;
+    const ctx = canvas.getContext('2d')!;
+  let width, height;
+  let points = [];
+  const POINTS_COUNT = 70;
+  const MAX_DISTANCE = 120;
+
+  class Point {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+
+  constructor(x: number, y: number) {
+    this.x = x;
+    this.y = y;
+    this.vx = (Math.random() - 0.5) * 0.5;
+    this.vy = (Math.random() - 0.5) * 0.5;
+  }
+
+  move() {
+    this.x += this.vx;
+    this.y += this.vy;
+    if (this.x < 0 || this.x > width) this.vx *= -1;
+    if (this.y < 0 || this.y > height) this.vy *= -1;
+  }
+}
+
+
+  function resize() {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+  }
+
+  function dist(a, b) {
+    return Math.sqrt((a.x - b.x) ** 2 + (a.y - b.y) ** 2);
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+
+    points.forEach(p => {
+      p.move();
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 2, 0, Math.PI * 2, false);
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+      ctx.fill();
+    });
+
+    for (let i = 0; i < POINTS_COUNT; i++) {
+      for (let j = i + 1; j < POINTS_COUNT; j++) {
+        let d = dist(points[i], points[j]);
+        if (d < MAX_DISTANCE) {
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(255, 255, 255, ${(MAX_DISTANCE - d) / MAX_DISTANCE * 0.6})`;
+          ctx.lineWidth = 1;
+          ctx.moveTo(points[i].x, points[i].y);
+          ctx.lineTo(points[j].x, points[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  function init() {
+    resize();
+    points = [];
+    for (let i = 0; i < POINTS_COUNT; i++) {
+      points.push(new Point(Math.random() * width, Math.random() * height));
+    }
+    animate();
+  }
+
+  window.addEventListener('resize', () => {
+    resize();
+  });
+
+  // Use onMount if your Astro setup supports solid-js or similar frameworks
+  // Otherwise, simply call init() here or in a mounted component lifecycle hook
+  init();
+</script>
