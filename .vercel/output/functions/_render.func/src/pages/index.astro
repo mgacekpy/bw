@@ -1,0 +1,47 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../sections/Hero.astro';
+import Services from '../sections/Services.astro';
+import Partnership from '../sections/Partnership.astro';
+import Process from '../sections/Process.astro';
+import Metrics from '../sections/Metrics.astro';
+import Portfolio from '../sections/Portfolio.astro';
+import Technologies from '../sections/Technologies.astro';
+import About from '../sections/About.astro';
+import CTA from '../sections/CTA.astro';
+import Footer from '../components/Footer.astro';
+
+
+const title = "BiznesWizytowka.pl – Tworzenie stron, sklepów, aplikacji web i desktop | Wrocław";
+const description = "Projektuję i wdrażam strony internetowe, sklepy online, aplikacje webowe i desktopowe. Nowoczesne technologie, szybkie wdrożenia i realne wyniki dla firm.";
+---
+
+<Layout {title} {description} ogImage="/og/home-og.jpg">
+    <head slot="head">
+        
+    </head>
+    <Header />
+    <main>
+        <Hero />
+        <Services />
+        <Partnership />
+        <Process />
+        <Metrics /> 
+        <Portfolio />
+        <Technologies />
+        <About />
+        <CTA />
+    </main>
+    <Footer />
+
+    <div id="service-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-label="Szczegóły usługi" class="fixed inset-0 bg-black/70 z-50 flex justify-center items-center p-4 transition-opacity duration-300 opacity-0 pointer-events-none">
+    
+    <div id="modal-content" class="bg-surface rounded-lg shadow-xl p-8 w-full max-w-2xl relative border border-zinc-700 transition-transform duration-300 scale-95">
+        <button id="modal-close" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl">&times;</button>
+        <h2 id="modal-title" class="text-2xl font-bold text-primary mb-6"></h2>
+        <div id="modal-details" class="text-secondary leading-relaxed"></div>
+    </div>
+
+</div>
+</Layout>

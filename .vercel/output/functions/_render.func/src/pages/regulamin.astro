@@ -1,0 +1,111 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import CTA from '../sections/CTA.astro';
+import Footer from '../components/Footer.astro';
+
+const pageTitle = "Regulamin Serwisu | BiznesWizytowka.pl";
+const metaDescription = "Regulamin korzystania z serwisu BiznesWizytowka.pl, w tym zasady dotyczące usług, oprogramowania i własności intelektualnej.";
+---
+
+<Layout title={pageTitle} description={metaDescription}>
+  <Header />
+
+  <main>
+    <section class="pt-32 pb-20 text-center">
+      <div class="relative z-10 text-center px-4 w-full md:w-5/6 lg:w-4/5 mx-auto">
+        <h1 id="page-hero-title" class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
+          Regulamin Serwisu
+        </h1>
+        <p id="page-hero-subtitle" class="mt-6 text-lg text-secondary">
+          Ostatnia aktualizacja: 12 sierpnia 2025
+        </p>
+      </div>
+    </section>
+
+    <section class="pb-20 sm:pb-32">
+        <div class="content-box max-w-4xl mx-auto bg-surface/50 border border-white/10 p-8 sm:p-12 rounded-2xl">
+            <div class="prose">
+                <h2>§1 Postanowienia Ogólne</h2>
+                <ol>
+                    <li>Serwis internetowy działający pod adresem <strong>BiznesWizytowka.pl</strong> prowadzony jest przez <strong>Mateusza Gacek</strong>, z siedzibą w <strong>Żarach</strong>, zwanego dalej „Usługodawcą”.</li>
+                    <li>Niniejszy regulamin, zwany dalej „Regulaminem”, określa zasady korzystania z serwisu BiznesWizytowka.pl, zwanego dalej „Serwisem”, przez użytkowników, zwanych dalej „Użytkownikami”.</li>
+                    <li>Każdy Użytkownik zobowiązany jest do zapoznania się z treścią Regulaminu i jego przestrzegania.</li>
+                </ol>
+
+                <h2>§2 Rodzaje i Zakres Usług</h2>
+                <ol>
+                    <li>Usługodawca świadczy za pośrednictwem Serwisu następujące usługi:
+                        <ul class="list-disc pl-6 mt-2">
+                            <li><strong>Udostępnianie treści:</strong> Prezentacja oferty handlowej, portfolio, artykułów blogowych (w przyszłości) oraz innych materiałów informacyjnych.</li>
+                            <li><strong>Usługa kontaktu:</strong> Umożliwienie wysłania zapytania za pośrednictwem formularza kontaktowego.</li>
+                            <li><strong>Dostarczanie oprogramowania:</strong> Umożliwienie pobrania i korzystania z oprogramowania „Email Sort Pro” na zasadach określonych w licencji.</li>
+                            <li><strong>Sklep internetowy (planowane):</strong> W przyszłości Serwis będzie umożliwiał zakup produktów cyfrowych lub usług.</li>
+                        </ul>
+                    </li>
+                </ol>
+                
+                <h2>§3 Oprogramowanie „Email Sort Pro”</h2>
+                <ol>
+                    <li>Usługodawca jest twórcą i właścicielem praw autorskich do oprogramowania „Email Sort Pro”.</li>
+                    <li>Oprogramowanie udostępniane jest w wersji darmowej (Free) oraz płatnej (Pro) na zasadach licencji niewyłącznej.</li>
+                    <li>Użytkownik korzysta z programu na własną odpowiedzialność. Usługodawca nie ponosi odpowiedzialności za ewentualne szkody wynikłe z jego użytkowania.</li>
+                </ol>
+
+                <h2>§4 Prawa i Obowiązki Użytkownika</h2>
+                <ol>
+                    <li>Użytkownik zobowiązuje się do korzystania z Serwisu w sposób zgodny z prawem i dobrymi obyczajami oraz do podawania prawdziwych danych w formularzu kontaktowym.</li>
+                    <li>Zabronione jest dostarczanie przez Użytkownika treści o charakterze bezprawnym.</li>
+                </ol>
+
+                <h2>§5 Własność Intelektualna</h2>
+                <ol>
+                    <li>Wszelkie treści zamieszczone w Serwisie, w tym teksty, grafiki, logotypy, a także oprogramowanie „Email Sort Pro”, stanowią własność intelektualną Usługodawcy i podlegają ochronie prawnej.</li>
+                    <li>Kopiowanie i rozpowszechnianie tych materiałów bez pisemnej zgody Usługodawcy jest zabronione.</li>
+                </ol>
+                
+                <h2>§6 Postanowienia Końcowe</h2>
+                <ol>
+                    <li>Usługodawca zastrzega sobie prawo do wprowadzania zmian w Regulaminie.</li>
+                    <li>W sprawach nieuregulowanych w niniejszym Regulaminie mają zastosowanie przepisy prawa polskiego.</li>
+                    <li>Wszelkie pytania dotyczące Regulaminu należy kierować na adres e-mail: <strong>kontakt@bizneswizytowka.pl</strong>.</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <CTA />
+  </main>
+  
+  <Footer />
+</Layout>
+
+<style>
+  .prose {
+    color: var(--color-secondary, #A1A1A1);
+    line-height: 1.7;
+  }
+  .prose h2 {
+    color: var(--color-primary, #E2E2E2);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 2.5em;
+    margin-bottom: 1em;
+  }
+  .prose ol {
+    list-style-type: decimal;
+    padding-left: 1.5rem;
+  }
+  .prose li {
+    margin-bottom: 0.75rem;
+  }
+  .prose strong {
+    color: var(--color-primary, #E2E2E2);
+    font-weight: 600;
+  }
+  .prose ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+  }
+</style>
+

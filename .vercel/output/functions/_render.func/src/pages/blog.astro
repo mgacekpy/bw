@@ -1,0 +1,108 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const pageTitle = "Poradniki SEO – BiznesWizytowka.pl";
+const metaDescription = "Zbiór poradników SEO bez dat, z możliwością filtrowania tematycznego, pomagający zwiększyć widoczność w internecie.";
+
+const articles = [
+  {
+    id: "seo-podstawy",
+    title: "Podstawy SEO",
+    url: "/blog/seo-podstawy", // ścieżka do potencjalnego podstrona-entry
+    category: "WordPress", // badge czerwony
+    tags: ["B2B przemysł", "SEO ogólnopolskie", "Szybkość/CWV"],
+    lead: "ES-Serwis: serwis WP skalowany na SEO w całej Polsce. Landingi usług (instalacje, pomiary, elektryka przemysłowa, remonty), schema i szybkie CWV pod industrial B2B.",
+    content: "Pełen artykuł: optymalizacja, techniki, narzędzia itd..."
+  },
+  {
+    id: "content-marketing",
+    title: "Content Marketing",
+    url: "/blog/content-marketing",
+    category: "WordPress",
+    tags: ["Marketing", "SEO", "Treść"],
+    lead: "Jak tworzyć wartościowe treści, które przyciągają użytkowników i zwiększają zaangażowanie.",
+    content: "Pełen artykuł o strategii content marketingowej..."
+  },
+  // Dodaj kolejne artykuły...
+];
+---
+
+<Layout title={pageTitle} description={metaDescription}>
+  <Header />
+  <main class="max-w-7xl mx-auto px-4 pb-16 pt-32">
+    <h1 class="text-4xl font-bold mb-6 text-primary">{pageTitle}</h1>
+
+    <div id="filters" class="mb-6 flex gap-2 flex-wrap">
+      <button
+        class="filter-btn rounded-xl px-4 py-2 bg-surface/60 text-primary hover:bg-primary hover:text-background transition-colors disabled:opacity-50"
+        data-filter=""
+        disabled
+        id="clear-filter"
+      >
+        Pokaż wszystkie
+      </button>
+      {Array.from(new Set(articles.flatMap(a => a.tags))).map(tag => (
+        <button
+          class="filter-btn rounded-xl px-4 py-2 bg-surface/60 text-primary hover:bg-primary hover:text-background transition-colors"
+          data-filter={tag}
+        >
+          {tag}
+        </button>
+      ))}
+    </div>
+
+    <section id="articles" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {articles.map(article => (
+        <article
+          key={article.id}
+          data-tags={article.tags.join(',')}
+          class="bg-surface/50 border border-white/10 rounded-2xl p-6 shadow-sm flex flex-col h-full"
+          id={article.id}
+        >
+          <h2 class="text-xl font-bold mb-4 text-primary">
+            <a href={article.url} class="hover:underline text-primary">{article.title}</a>
+          </h2>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="px-3 py-1 rounded-full bg-red-700 text-white text-xs font-semibold">{article.category}</span>
+            {article.tags.map(tag => (
+              <span class="px-3 py-1 rounded-full bg-blue-700 text-white text-xs font-semibold">{tag}</span>
+            ))}
+          </div>
+          <div class="mt-auto border-l-4 border-green-600 bg-green-900/10 text-green-700 rounded-lg px-5 py-3 text-sm leading-relaxed">
+            {article.lead}
+          </div>
+        </article>
+      ))}
+    </section>
+
+    <script type="module" is:inline>
+      (() => {
+        const filters = document.querySelectorAll("#filters .filter-btn");
+        const articles = document.querySelectorAll("#articles article");
+        const clearFilterBtn = document.getElementById("clear-filter");
+
+        function setFilter(tag) {
+          filters.forEach(btn => (btn.disabled = false));
+          if (tag === "") {
+            articles.forEach(article => (article.style.display = ""));
+            clearFilterBtn.disabled = true;
+          } else {
+            clearFilterBtn.disabled = false;
+            articles.forEach(article => {
+              const tags = article.dataset.tags.split(",");
+              article.style.display = tags.includes(tag) ? "" : "none";
+            });
+          }
+        }
+        filters.forEach(btn => {
+          btn.addEventListener("click", () => {
+            setFilter(btn.dataset.filter);
+          });
+        });
+      })();
+    </script>
+  </main>
+  <Footer />
+</Layout>

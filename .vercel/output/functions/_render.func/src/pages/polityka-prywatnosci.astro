@@ -1,0 +1,90 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import CTA from '../sections/CTA.astro';
+import Footer from '../components/Footer.astro';
+
+const pageTitle = "Polityka Prywatności | BiznesWizytowka.pl";
+const metaDescription = "Zasady przetwarzania danych osobowych w serwisie BiznesWizytowka.pl. Dowiedz się, jakie dane zbieramy, w jakim celu i jakie masz prawa zgodnie z RODO.";
+---
+
+<Layout title={pageTitle} description={metaDescription}>
+  <Header />
+
+  <main>
+    <section class="pt-32 pb-20 text-center">
+      <div class="relative z-10 text-center px-4 w-full md:w-5/6 lg:w-4/5 mx-auto">
+        <h1 id="page-hero-title" class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
+          Polityka Prywatności
+        </h1>
+        <p id="page-hero-subtitle" class="mt-6 text-lg text-secondary">
+          Ostatnia aktualizacja: 12 sierpnia 2025
+        </p>
+      </div>
+    </section>
+
+    <section class="pb-20 sm:pb-32">
+        <div class="content-box max-w-4xl mx-auto bg-surface/50 border border-white/10 p-8 sm:p-12 rounded-2xl">
+            <div class="prose">
+                <h2>§1 Postanowienia Ogólne</h2>
+                <ol>
+                    <li>Administratorem danych osobowych zbieranych za pośrednictwem serwisu internetowego <strong>BiznesWizytowka.pl</strong> jest <strong>Mateusz Gacek</strong>, zwany dalej „Administratorem”.</li>
+                    <li>Dane osobowe Użytkowników są przetwarzane zgodnie z Rozporządzeniem Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. (RODO).</li>
+                    <li>Administrator dokłada szczególnej staranności w celu ochrony interesów osób, których dane dotyczą, a w szczególności zapewnia, że zbierane przez niego dane są przetwarzane zgodnie z prawem.</li>
+                </ol>
+
+                <h2>§2 Cel i Zakres Zbierania Danych</h2>
+                <ol>
+                    <li><strong>Formularz kontaktowy:</strong> Dane podane w formularzu (imię i nazwisko, adres e-mail, treść wiadomości, opcjonalnie telefon) są przetwarzane w celu odpowiedzi na zapytanie na podstawie Twojej zgody (art. 6 ust. 1 lit. a RODO).</li>
+                    <li><strong>Aplikacja „Email Sort Pro”:</strong> Cały proces przetwarzania danych przez aplikację odbywa się <strong>lokalnie na komputerze Użytkownika</strong>. Administrator <strong>nie ma dostępu</strong> do danych logowania, treści e-maili ani załączników Użytkownika.</li>
+                    <li><strong>Konto Użytkownika (planowane):</strong> W przyszłości, dane podane przy rejestracji konta będą przetwarzane w celu realizacji zamówień w sklepie.</li>
+                    <li><strong>Pliki Cookies:</strong> Serwis może używać plików cookies w celach funkcjonalnych i analitycznych. Możesz zarządzać ustawieniami cookies w swojej przeglądarce.</li>
+                    <li><strong>Logi serwera:</strong> Serwer automatycznie zapisuje dane takie jak adres IP czy informacje o przeglądarce w celach administracyjnych i zapewnienia bezpieczeństwa.</li>
+                </ol>
+
+                <h2>§3 Prawa Osób, Których Dane Dotyczą</h2>
+                <ol>
+                    <li>Masz prawo dostępu do swoich danych, ich sprostowania, usunięcia, ograniczenia przetwarzania, przenoszenia, wniesienia sprzeciwu oraz cofnięcia zgody w dowolnym momencie.</li>
+                    <li>Masz prawo wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych.</li>
+                    <li>W celu realizacji swoich praw, skontaktuj się z Administratorem pod adresem e-mail: <strong>kontakt@bizneswizytowka.pl</strong>.</li>
+                </ol>
+
+                <h2>§4 Postanowienia Końcowe</h2>
+                <ol>
+                    <li>Administrator stosuje środki techniczne i organizacyjne zapewniające ochronę przetwarzanych danych osobowych.</li>
+                    <li>W sprawach nieuregulowanych niniejszą Polityką prywatności stosuje się odpowiednio przepisy RODO oraz inne właściwe przepisy prawa polskiego.</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <CTA />
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .prose {
+    color: var(--color-secondary, #A1A1A1);
+    line-height: 1.7;
+  }
+  .prose h2 {
+    color: var(--color-primary, #E2E2E2);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 2.5em;
+    margin-bottom: 1em;
+  }
+  .prose ol {
+    list-style-type: decimal;
+    padding-left: 1.5rem;
+  }
+  .prose li {
+    margin-bottom: 0.75rem;
+  }
+  .prose strong {
+    color: var(--color-primary, #E2E2E2);
+    font-weight: 600;
+  }
+</style>
